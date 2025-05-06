@@ -1,1 +1,1 @@
-# odin-rps
+# Rock Paper Scissors for Odin
