@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 const getComputerChoice = () => {
   const results = ['rock', 'paper', 'scissors'];
   const randomNumber = Math.floor(Math.random() * results.length);
@@ -16,27 +13,37 @@ const getHumanChoice = () => {
   if (choice === 's') return 'scissors';
 }
 
-const playRound = (humanChoice, computerChoice) => {
-  if (humanChoice === computerChoice) {
-    console.log("It's a tie!");
-    return;
+const playGame = () => {
+  let humanScore = 0;
+  let computerScore = 0;
+
+  const playRound = (humanChoice, computerChoice) => {
+    if (humanChoice === computerChoice) {
+      console.log("It's a tie!");
+      return;
+    }
+
+    if (
+      (humanChoice === 'rock' && computerChoice === 'scissors') ||
+      (humanChoice === 'paper' && computerChoice === 'rock') ||
+      (humanChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+      humanScore++;
+      console.log(`${humanChoice} beats ${computerChoice}! The human wins!`);
+    }
+    else {
+      computerScore++;
+      console.log(`${computerChoice} beats ${humanChoice}! The computer wins!`);
+    }
   }
 
-  if (
-    (humanChoice === 'rock' && computerChoice === 'scissors') ||
-    (humanChoice === 'paper' && computerChoice === 'rock') ||
-    (humanChoice === 'scissors' && computerChoice === 'paper')
-  ) {
-    humanScore++;
-    console.log(`${humanChoice} beats ${computerChoice}! The human wins!`);
+  for (let i = 0; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
   }
-  else {
-    computerScore++;
-    console.log(`${computerChoice} beats ${humanChoice}! The computer wins!`);
-  }
+
+  console.log(`The final score is:\nComputer: ${computerScore}\nHuman:${humanScore}`);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
