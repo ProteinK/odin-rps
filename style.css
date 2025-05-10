@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.buttons {
+  margin-bottom: 50px;
+}
+
+.buttons button {
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #1ECBE1;
+  color: black;
+}
+
+#result {
+  font-size: 1.2em;
+}
+
+#human-score,
+#computer-score {
+  font-weight: 700;
+}
